@@ -18,10 +18,10 @@ if(logged_in()== true){
 <div class="col-xs-12 col-sm-6 col-md-8 content"  >
 <?php 
 
-          $grpid = $_GET['gid'];
-            $results = mysql_query("SELECT * FROM tbl_lessons WHERE gid = '$grpid' ");
+          $lid = $_GET['lid'];
+            $results = mysql_query("SELECT * FROM tbl_lessons WHERE id = '$lid' ");
           while($row1 = mysql_fetch_assoc($results)){
-           $title =$row1['title'];
+          $title =$row1['title'];
            $content =$row1['content'];
           }
       ?>

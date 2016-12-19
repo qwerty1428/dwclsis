@@ -128,7 +128,7 @@ if(logged_in()== true || $user_data['access']== 2){
 			                	while($row1 = mysql_fetch_assoc($results)){
 		                         echo "<tr>
 									<td>#</td>
-									<td><a href='view_lesson.php?gid=".$row1['id']."'>".$row1['title']."</a></td>
+									<td><a href='view_lesson.php?lid=".$row1['id']."'>".$row1['title']."</a></td>
 									<td>$count $suffix</td>
 									<td>".$row1['views']."</td>";
 

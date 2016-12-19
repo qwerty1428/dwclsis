@@ -146,7 +146,7 @@ if(logged_in()== true){
                   <td>$count $suffix</td>
                  
                   <td><a href='#' class='btn btn-default'>Generate</a></td>
-                  <td><a href='add_lesson.php?id=".$row1['id']."' class='btn btn-primary'>Edit</a><a href='delete_lesson.php?id=".$row1['id']."' class='btn btn-danger' onclick=\"return confirm('Are you sure you want to delete this order?')\" >Delete</a></td>
+                  <td><a href='create_quiz_question.php?id=".$row1['id']."' class='btn btn-primary'>Edit</a><a href='delete_quiz.php?id=".$row1['id']."' class='btn btn-danger' onclick=\"return confirm('Are you sure you want to delete this order?')\" >Delete</a></td>
                   ";
 
 

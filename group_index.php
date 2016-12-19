@@ -22,6 +22,7 @@ if(logged_in()== true){
       <th>Group Name</th>
       <th>Date Posted</th>
       <th>Password</th>
+      <th>No of Student Joined</th>
       <th>Action</th>
 
      </tr>
@@ -119,14 +120,15 @@ if(logged_in()== true){
                           
                         break;
                     }
-                        
-
+                       $countstudent = mysql_query("SELECT * FROM student_group WHERE gid ='".$row1['gid']."'"); 
+                       $numstudent = mysql_num_rows($countstudent);
                              echo "<tr>
                   <td>#</td>
                   <td>".$row1['gname']."</td>
                   <td>$count $suffix</td>
                 
                   <td>".$row1['gpassword']."</td>
+                  <td> $numstudent</td>
                  
                   <td><a href='create_group.php?id=".$row1['gid']."' class='btn btn-primary' rel='facebox'>Edit</a><a href='delete_group.php?id=".$row1['gid']."' class='btn btn-danger' onclick=\"return confirm('Are you sure you want to delete this order?')\" >Delete</a></td>
                   ";

@@ -29,7 +29,7 @@ if($user_data['access']== 1){
     if ($countGroup==0) {
       $group ="You have not joined a group";
     }else{
-       $group = $gname;
+       $group = "<a href='student_group_page.php?gid=$gid'>$group</a>";
     }
     echo "<div class='thumbnail' id='user-menu'>
       <img src='img/prof_pic/def.png' id='prof_pic'>
@@ -46,7 +46,7 @@ if($user_data['access']== 1){
                 <h3 class='panel-title'>Group Joined</h3>
               </div>
               <div class='panel-body'>
-               <h3 class='text-center'><a href='student_group_page.php?gid=$gid'>$group</a></h3>
+               <h3 class='text-center'>$group</h3>
               
               </div>
             </div>

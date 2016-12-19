@@ -13,7 +13,7 @@ include 'includes/overall_header.php';
 				<div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control" name="username" id="inputEmail3" placeholder="Email">
+				      <input type="text" class="form-control" name="username" id="inputEmail3" placeholder="Email" autocomplete="off">
 				    </div>
 				  </div>
 				  <div class="form-group">
@@ -24,11 +24,8 @@ include 'includes/overall_header.php';
 				  </div>
 				  <div class="form-group">
 				    <div class="col-sm-offset-2 col-sm-10">
-				      <div class="checkbox">
-				        <label>
-				          <input type="checkbox"> Remember me
-				        </label>
-				      </div>
+				      <a href="register_student.php" class="btn btn-primary">Register as Student</a>
+				      <a href="register_teacher.php" class="btn btn-default">Register as Teacher</a>
 				    </div>
 				  </div>
 				  <div class="form-group">

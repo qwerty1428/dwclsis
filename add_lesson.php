@@ -33,20 +33,15 @@ if(logged_in()== true){
                     }
                      
                    
-                      if($countlesson == 0 ){
-                      $qtr = "Please Select";
-                     } else{
-                       $qtr = $qtr;
-                    
-                     }
-                     if($group == 0 ){
-                     $g = "Please Select";
-                     } else{
-                       $g = $groupname;
-                    
-                     }
+                      
                    }
-
+                  if(isset($_GET['id']) ){
+                     $qtr = "<option value=".$qtr." >".$qtr."</option>"; 
+                     $g =  "<option value=".$groupname." >".$groupname."</option>";
+                     } else{
+                        $qtr = "<option value='' >Please Select</option>";
+                    $g = "<option value='' >Please Select</option>";
+                     }
                     
 
                      
@@ -69,7 +64,7 @@ if(logged_in()== true){
                               
                     
                               
-                              <option value="" ><?php echo $qtr; ?></option>
+                            <?php echo $qtr; ?>
                               <option value="1st">1st</option>
                               <option value="2nd">2nd</option>
                               <option value="3rd">3rd</option>
@@ -83,7 +78,7 @@ if(logged_in()== true){
                         <strong>Group</strong><br />
                        
                            <select name="group" required class="form-control">
-                            <option value=""><?php echo $g; ?></option>
+                          <?php echo $g; ?>
                               <?php 
                                $selectGroup= mysql_query("SELECT * FROM tbl_group  ");
                               while ($row1 = mysql_fetch_assoc($selectGroup)) {
