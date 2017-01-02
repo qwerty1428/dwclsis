@@ -27,7 +27,7 @@ if(logged_in()== true){
 
      </tr>
         <?php 
-            $results = mysql_query("SELECT * FROM quiz_questions ");
+            $results = mysql_query("SELECT * FROM quiz_questions WHERE posted_by = '".$user_data['user_id']."' ");
                  $colnum=mysql_num_rows($results);
                   if($colnum == 0){
                       echo "<tr>

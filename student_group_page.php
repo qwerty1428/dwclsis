@@ -36,9 +36,9 @@ if(logged_in()== true || $user_data['access']== 2){
 		    		$results = mysql_query("SELECT * FROM tbl_lessons WHERE gid = '$grpid' ");
                  $colnum=mysql_num_rows($results);
 	                if($colnum == 0){
-	                    echo "<div class='well'>
-	                      <h3>No Lesson Posted</h3>
-	                    </div>";
+	                    echo "<tr >
+	                      <td colspan='4'><h3>No Lesson Posted</h3></td>
+	                    </tr>";
 	                }else{
 	                	$date_posted=$row1['date_posted'];
 	                	$time=time();
@@ -150,7 +150,10 @@ if(logged_in()== true || $user_data['access']== 2){
          <div class="row">
         <?php 
             $results = mysql_query("SELECT * FROM videos WHERE gid = '$grpid' ");
-                 
+                 $colnum=mysql_num_rows($results);
+                  if($colnum == 0){
+                      echo "<div class='well'><h3> No Video Posted</h3></div>";
+                  }else{
                     while($row1 = mysql_fetch_assoc($results)){
                     $date_posted=$row1['date_posted'];
                     $time=time();
@@ -248,8 +251,8 @@ if(logged_in()== true || $user_data['access']== 2){
                                         <img src='".$row1['thumbnail']."' alt='...' />
                                         </a>
                                         <div class='caption'>
-                                          <h3>".$row1['title']."</h3>
-                                          $count $suffix
+                                         <a class='text-center' href='watch_video.php?v=".$row1['file_id']."'> <h3>".$row1['title']."</h3></a>
+                                         <p class='text-center'>$count $suffix</p>
                                         </div>
                                       </div>
                                     </div>
@@ -257,13 +260,16 @@ if(logged_in()== true || $user_data['access']== 2){
 
                              <tr>";
                         }
+                  }
+                    
+         
           ?>
             </div>
         </div>   
 </div>
 <div class="panel panel-default">
   <!-- Default panel contents -->
-  <div class="panel-heading">Quiz</div>
+  <div class="panel-heading text-center">Quiz</div>
 
   <!-- Table -->
   <table class="table">
@@ -275,6 +281,12 @@ if(logged_in()== true || $user_data['access']== 2){
   </tr>
   <?php 
     $getquiz = mysql_query("SELECT * FROM quiz_questions WHERE gid='$grpid' ");
+    $colnum=mysql_num_rows($getquiz);
+    if($colnum == 0){
+                      echo "<tr >
+                        <td colspan='4'><h3>No Quiz Posted</h3></td>
+                      </tr>";
+                  }else{
     while($row2 = mysql_fetch_assoc($getquiz)){
        $getID = $row2['id'];
       echo "<tr>
@@ -285,13 +297,42 @@ if(logged_in()== true || $user_data['access']== 2){
       ";
 
     }
-
+}
   ?>
 
 
   </table>
 </div>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading text-center">Games</div>
 
+  <!-- Table -->
+  <div class="panel-body">
+    <div class="row">
+        <div class="col-xs-6 col-md-3">
+          <a href="game1.php" class="thumbnail">
+            <img src="img/game_cover/cover1.png" alt="..." width="150px" height="150px">
+            <h3 class="text-center">The Brain Game</h3>
+          </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+          <a href="game2.php" class="thumbnail">
+            <img src="img/game_cover/cover2.png" alt="..." width="150px" height="150px">
+            <h3 class="text-center">Space Gravity Game</h3>
+          </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+          <a href="game3.php" class="thumbnail">
+            <img src="img/game_cover/cover3.png" alt="..." width="150px" height="150px">
+            <h3 class="text-center">Science Connect Game</h3>
+          </a>
+        </div>
+
+      </div>
+
+  </div>
+</div>
 
 
 
