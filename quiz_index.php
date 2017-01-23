@@ -13,21 +13,21 @@ if(logged_in()== true){
  <div class="panel panel-default" >
       <div class="panel-heading">
         <h3 class="panel-title text-center">Quiz</h3>
-       <div class="btn-group" ><a href="create_quiz_question.php" class="btn btn-default" >Create</a></div>
+       <div class="btn-group" ><a href="create_quiz.php" class="btn btn-default" rel='facebox' >Create</a></div>
        
       </div>
  <table class="table">
      <tr>
       <th>#</th>
-      <th>Group Name</th>
+      <th>Quiz Name</th>
       <th>Quarter</th>
       <th>Date Posted</th>
-      <th>Generate Password</th>
+      <th>Generated Password</th>
       <th>Action</th>
 
      </tr>
         <?php 
-            $results = mysql_query("SELECT * FROM quiz_questions WHERE posted_by = '".$user_data['user_id']."' ");
+            $results = mysql_query("SELECT * FROM quiz_group WHERE posted_by = '".$user_data['user_id']."'");
                  $colnum=mysql_num_rows($results);
                   if($colnum == 0){
                       echo "<tr>
@@ -35,24 +35,8 @@ if(logged_in()== true){
                       </tr>";
                   }else{
                    while($row1 = mysql_fetch_assoc($results)){
-                      $date_posted = $row1['date_posted'];
-                      $gid = $row1['gid'];
-                      $lid = $row1['lessonid'];
-                       $getLesson= mysql_query("SELECT * FROM tbl_lessons WHERE id='$lid'  ");
-                      $getGroup= mysql_query("SELECT * FROM tbl_group WHERE gid='$gid'  ");
-                      if($gid == 0 )
-                      {
-                       $groupname="Not yet assigned to a Group";
-                      }
-                      else{
-                        while ($row2 = mysql_fetch_assoc($getGroup)) {
-                      $groupname = $row2['gname'];
-                      }
-                    }
-                       while ($row3 = mysql_fetch_assoc($getLesson)) {
-                      $lessontitle = $row3['title'];
-                      }
-                    
+                     $name = $row1['name'];
+                      $date_posted=$row1['date_created'];
                     $time=time();
                     $diff = $time - $date_posted;
 
@@ -139,14 +123,13 @@ if(logged_in()== true){
                     }
                         
 
-                             echo "<tr>
+                  echo "<tr>
                   <td>#</td>
-                  <td>$groupname</td>
-                   <td>".$row['qtr']."</td>
+                  <td>$name</td>
+                   <td>".$row1['qtr']."</td>
                   <td>$count $suffix</td>
-                 
-                  <td><a href='#' class='btn btn-default'>Generate</a></td>
-                  <td><a href='create_quiz_question.php?id=".$row1['id']."' class='btn btn-primary'>Edit</a><a href='delete_quiz.php?id=".$row1['id']."' class='btn btn-danger' onclick=\"return confirm('Are you sure you want to delete this order?')\" >Delete</a></td>
+                  <td>".$row1['password']."</td>
+                  <td><a href='#' class='btn btn-primary'>Edit</a><a href='delete_quiz.php?id=".$row1['qgid']."' class='btn btn-danger' onclick=\"return confirm('Are you sure you want to delete this quiz?')\" >Delete</a></td>
                   ";
 
 

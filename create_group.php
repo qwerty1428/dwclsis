@@ -11,7 +11,7 @@ include 'core/init.php';
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-5 control-label">Group Name</label>
     <div class="col-sm-7">
-      <input type="text" class="form-control" name="group_name" placeholder="Email">
+      <input type="text" class="form-control" name="group_name" placeholder="Group Name">
     </div>
   </div>
   <div class="form-group">

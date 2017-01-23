@@ -143,7 +143,7 @@ if(logged_in()== true){
                   <td>".$row1['qtr']."</td>
                  
                   <td> $groupname</td>
-                  <td><a href='add_lesson.php?id=".$row1['id']."' class='btn btn-primary'>Edit</a><a href='delete_lesson.php?id=".$row1['id']."' class='btn btn-danger' onclick=\"return confirm('Are you sure you want to delete this order?')\" >Delete</a></td>
+                  <td><a href='add_lesson.php?id=".$row1['id']."' class='btn btn-primary'>Edit</a><a href='delete_lesson.php?id=".$row1['id']."' class='btn btn-danger' onclick=\"return confirm('Are you sure you want to delete this lesson?')\" >Delete</a></td>
                   ";
 
 

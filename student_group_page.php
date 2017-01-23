@@ -25,7 +25,6 @@ if(logged_in()== true || $user_data['access']== 2){
 		  </div>
 		 <table class="table">
 		 <tr>
-		 	<th>#</th>
 		 	<th>Title</th>
 		 	<th>Date Posted</th>
 		 	<th>Views</th>
@@ -33,6 +32,7 @@ if(logged_in()== true || $user_data['access']== 2){
 		 </tr>
    			<?php 
         $grpid = $_GET['gid'];
+        $_SESSION['gropID']=$grpid;
 		    		$results = mysql_query("SELECT * FROM tbl_lessons WHERE gid = '$grpid' ");
                  $colnum=mysql_num_rows($results);
 	                if($colnum == 0){
@@ -127,7 +127,7 @@ if(logged_in()== true || $user_data['access']== 2){
                     }
 			                	while($row1 = mysql_fetch_assoc($results)){
 		                         echo "<tr>
-									<td>#</td>
+									
 									<td><a href='view_lesson.php?lid=".$row1['id']."'>".$row1['title']."</a></td>
 									<td>$count $suffix</td>
 									<td>".$row1['views']."</td>";
@@ -273,14 +273,17 @@ if(logged_in()== true || $user_data['access']== 2){
 
   <!-- Table -->
   <table class="table">
-  <tr>
-    <td>#</td>
-    <td>Quiz No:</td>
-    <td>Posted By:</td>
+ <tr>
+      
+      <th>Quiz Name</th>
+      <th>Quarter</th>
+      <th>Date Posted</th>
+      <th>Action</th>
 
-  </tr>
+     </tr>
   <?php 
-    $getquiz = mysql_query("SELECT * FROM quiz_questions WHERE gid='$grpid' ");
+
+    $getquiz = mysql_query("SELECT * FROM quiz_group WHERE gid='$grpid' ");
     $colnum=mysql_num_rows($getquiz);
     if($colnum == 0){
                       echo "<tr >
@@ -290,11 +293,14 @@ if(logged_in()== true || $user_data['access']== 2){
     while($row2 = mysql_fetch_assoc($getquiz)){
        $getID = $row2['id'];
       echo "<tr>
-            <td>&nbsp;</td>
-            <td><a href='quiz.php?question=$getID'>Quiz</a></td>
-            <td>&nbsp;</td>
-      </tr>
-      ";
+                 
+                  <td>".$row2['name']."</td>
+                   <td>".$row2['qtr']."</td>
+                  <td>$count $suffix</td>
+                 
+                  <td><a href='quiz_password.php' class='btn btn-primary' rel='facebox'>Enter Password</a></td>
+                  ";
+
 
     }
 }

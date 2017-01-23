@@ -7,7 +7,7 @@ function user_data($user_id){
 
 	if($func_num_args>1){
 		unset($func_get_args[0]);
-		 $fields ='`' .implode('`,`',$func_get_args).'`';
+		  $fields ='`' .implode('`,`',$func_get_args).'`';
 		 $data = mysql_fetch_assoc(mysql_query("SELECT $fields FROM users WHERE `user_id`= '$user_id' "));
 		
 		return $data;

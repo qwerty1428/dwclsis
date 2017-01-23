@@ -1,8 +1,8 @@
 <?php 
 include "core/init.php";
-
-$deletequestion = mysql_query("DELETE FROM quiz_questions WHERE id = ".$_GET['id']."");
-$deleteanswers = mysql_query("DELETE FROM answers_questions WHERE question_id = ".$_GET['id']."");
+$deletegroup = mysql_query("DELETE FROM quiz_group WHERE qgid = ".$_GET['id']."");
+$deletequestion = mysql_query("TRUNCATE TABLE questions");
+$deleteanswers = mysql_query("TRUNCATE TABLE answers");
 header("location:quiz_index.php");
 
 ?>

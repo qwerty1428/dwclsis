@@ -1,8 +1,9 @@
-<form action="enter_gpassword.php" class="form-inline" method="POST">
+<form action="enter_qpassword.php" class="form-inline" method="POST">
 <h3 class="page-header">
-	Enter Group Password
+	Enter Quiz Password
 </h3>
   <div class="form-group">
+
     <label class="sr-only" for="exampleInputPassword3">Password</label>
     <input type="password" class="form-control" name="password" required placeholder="Password">
   </div>

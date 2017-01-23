@@ -3,13 +3,16 @@ include 'core/init.php';
 include 'includes/overall_header.php';
 
 ?>
-<div class="row ">
+<div class="container-fluid" id="loginform">
+<div class="row">
+
 	<form action="login.php" name="form1" class="form-horizontal" method="POST">
 
 
 		<div class="col-md-4"></div>
 		<div class="col-md-4 well">
-			<h2 class="page-header text-center">Login</h2>
+			<h1 class="page-header text-center">Login</h1>
+
 				<div class="form-group">
 				    <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
 				    <div class="col-sm-8">

@@ -10,34 +10,46 @@ $answer3=$_POST['answer3'];
 $answer4=$_POST['answer4'];
 $anscorrect=$_POST['iscorrect'];
 $groupid=$_POST['group'];
-$addquestion = mysql_query("INSERT INTO quiz_questions(question,gid,posted_by,date_posted) VALUES ('$questions','$groupid','".$user_data['user_id']."','".time()."') ");
+$addquestion = mysql_query("INSERT INTO questions(question,qgid,posted_by,date_posted) VALUES ('$questions','".$_SESSION['qgroup']."','".$user_data['user_id']."','".time()."') ");
 	$lastID=mysql_insert_id();
 if($anscorrect == "answer1"){
-	$answersql = mysql_query("INSERT INTO answers_questions(question_id,answer,correct) VALUES ('$lastID','$answer1','1')");
-	mysql_query("INSERT INTO answers_questions(question_id,answer,correct) VALUES ('$lastID','$answer2','0')");
-	mysql_query("INSERT INTO answers_questions(question_id,answer,correct) VALUES ('$lastID','$answer3','0')");
-	mysql_query("INSERT INTO answers_questions(question_id,answer,correct) VALUES ('$lastID','$answer4','0')");
+	$answersql = mysql_query("INSERT INTO answers(question_id,answer,correct) VALUES ('$lastID','$answer1','1')");
+	mysql_query("INSERT INTO answers(question_id,answer,correct) VALUES ('$lastID','$answer2','0')");
+	mysql_query("INSERT INTO answers(question_id,answer,correct) VALUES ('$lastID','$answer3','0')");
+	mysql_query("INSERT INTO answers(question_id,answer,correct) VALUES ('$lastID','$answer4','0')");
 	header("location:quiz_index.php");
 }
 if($anscorrect == "answer2"){
-	$answersql = mysql_query("INSERT INTO answers_questions(question_id,answer,correct) VALUES ('$lastID','$answer1','0')");
-	mysql_query("INSERT INTO answers_questions(question_id,answer,correct) VALUES ('$lastID','$answer2','1')");
-	mysql_query("INSERT INTO answers_questions(question_id,answer,correct) VALUES ('$lastID','$answer3','0')");
-	mysql_query("INSERT INTO answers_questions(question_id,answer,correct) VALUES ('$lastID','$answer4','0')");
+	$answersql = mysql_query("INSERT INTO answers(question_id,answer,correct) VALUES ('$lastID','$answer1','0')");
+	mysql_query("INSERT INTO answers(question_id,answer,correct) VALUES ('$lastID','$answer2','1')");
+	mysql_query("INSERT INTO answers(question_id,answer,correct) VALUES ('$lastID','$answer3','0')");
+	mysql_query("INSERT INTO answers(question_id,answer,correct) VALUES ('$lastID','$answer4','0')");
 	header("location:quiz_index.php");
 }
 if($anscorrect == "answer3"){
-	$answersql = mysql_query("INSERT INTO answers_questions(question_id,answer,correct) VALUES ('$lastID','$answer1','0')");
-	mysql_query("INSERT INTO answers_questions(question_id,answer,correct) VALUES ('$lastID','$answer2','0')");
-	mysql_query("INSERT INTO answers_questions(question_id,answer,correct) VALUES ('$lastID','$answer3','1')");
-	mysql_query("INSERT INTO answers_questions(question_id,answer,correct) VALUES ('$lastID','$answer4','0')");
+	$answersql = mysql_query("INSERT INTO answers(question_id,answer,correct) VALUES ('$lastID','$answer1','0')");
+	mysql_query("INSERT INTO answers(question_id,answer,correct) VALUES ('$lastID','$answer2','0')");
+	mysql_query("INSERT INTO answers(question_id,answer,correct) VALUES ('$lastID','$answer3','1')");
+	mysql_query("INSERT INTO answers(question_id,answer,correct) VALUES ('$lastID','$answer4','0')");
 	header("location:quiz_index.php");
 }
 if($anscorrect == "answer4"){
-	$answersql = mysql_query("INSERT INTO answers_questions(question_id,answer,correct) VALUES ('$lastID','$answer1','0')");
-	mysql_query("INSERT INTO answers_questions(question_id,answer,correct) VALUES ('$lastID','$answer2','0')");
-	mysql_query("INSERT INTO answers_questions(question_id,answer,correct) VALUES ('$lastID','$answer3','0')");
-	mysql_query("INSERT INTO answers_questions(question_id,answer,correct) VALUES ('$lastID','$answer4','1')");
+	$answersql = mysql_query("INSERT INTO answers(question_id,answer,correct) VALUES ('$lastID','$answer1','0')");
+	mysql_query("INSERT INTO answers(question_id,answer,correct) VALUES ('$lastID','$answer2','0')");
+	mysql_query("INSERT INTO answers(question_id,answer,correct) VALUES ('$lastID','$answer3','0')");
+	mysql_query("INSERT INTO answers(question_id,answer,correct) VALUES ('$lastID','$answer4','1')");
 	header("location:quiz_index.php");
+}
+
+
+if(isset($_POST['id'])){
+	$edit_question = array(
+	'question' => $_POST['desc'],
+	'answer' => $_POST['answer'],
+	'correct' => $_POST['iscorrect'],
+	'id' => $_POST['id'],
+	 );
+
+	print_r($edit_question);
 }
 ?>

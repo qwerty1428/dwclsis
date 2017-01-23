@@ -128,9 +128,9 @@ if(logged_in()== true){
                   <td>$count $suffix</td>
                 
                   <td>".$row1['gpassword']."</td>
-                  <td> $numstudent</td>
+                  <td>$numstudent</td>
                  
-                  <td><a href='create_group.php?id=".$row1['gid']."' class='btn btn-primary' rel='facebox'>Edit</a><a href='delete_group.php?id=".$row1['gid']."' class='btn btn-danger' onclick=\"return confirm('Are you sure you want to delete this order?')\" >Delete</a></td>
+                  <td><a href='delete_group.php?id=".$row1['gid']."' class='btn btn-danger' onclick=\"return confirm('Are you sure you want to delete this group?')\" >Delete</a></td>
                   ";
 
 

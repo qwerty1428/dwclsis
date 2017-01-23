@@ -6,7 +6,6 @@
 
 if($user_data['access']== 1){
  echo $menu="<div class='nav nav-pills nav-stacked user-nav' role='group' aria-label='...'>
-      <li role='presentation' class='active'><a href='#' class='btn btn-primary' role='button'>Profile</a> </li>
       <li ><a href='group_index.php' class='btn btn-default' role='button'>Group</a></li>
       <li ><a href='lesson_index.php' class='btn btn-default' role='button'>Lessons</a></li>
       <li ><a href='video_index.php' class='btn btn-default' role='button'>Trivia Video</a></li>
