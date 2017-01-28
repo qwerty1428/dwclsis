@@ -57,8 +57,8 @@ $response = "";
 				$numCorrect++;
 			}
 		}
-		$percent = $numCorrect / $count * 100;
-		$percent = intval($percent);
+		$percent = $numCorrect / $count ;
+		//$percent = intval($percent);
 	if(isset($_POST['complete']) && $_POST['complete'] == "true"){
 		if(!isset($_POST['username']) || $_POST['username'] == ""){
 			echo "Sorry, We had an error";
@@ -68,16 +68,16 @@ $response = "";
 		$username = mysql_real_escape_string($username);
 		$username = strip_tags($username);
 	if(!in_array("1", $_SESSION['answer_array'])){
-		$sql = mysql_query("INSERT INTO quiz_takers (name, percentage, date_time) 
+		$sql = mysql_query("INSERT INTO quiz_takers (name, score, date_time) 
 		VALUES ('$username', '0', now())")or die(mysql_error());
-		echo "Did you even read the questions? You scored $percent%, You must be retarded.";
+		echo "Did you even read the questions? You scored $percent/$count.";
 		
 		//session_destroy();
 		exit();
 	}
-	$sql = mysql_query("INSERT INTO quiz_takers (name, percentage, date_time) 
+	$sql = mysql_query("INSERT INTO quiz_takers (name, score, date_time) 
 	VALUES ('$username', '$percent', now())")or die(mysql_error());
-		echo "Thanks for taking the quiz! You scored $percent%";
+		echo "Thanks for taking the quiz! You scored $percent/$count.";
 		
 		//session_destroy();
 		exit();

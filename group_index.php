@@ -36,96 +36,13 @@ if(logged_in()== true){
                   }else{
                    while($row1 = mysql_fetch_assoc($results)){
                       $date_posted = $row1['date_created'];
-                    $time=time();
-                    $diff = $time - $date_posted;
-
-                    switch (1) {
-                      case ($diff < 60):
-                         $count = $diff;
-                        if($count==0){
-                           $count = "a moment";
-                         }
-                        elseif ($count==1) 
-                          {
-                          $suffix = "second";
-                          }
-                        else
-                        {
-                          $suffix = "seconds";
-                        }
-                          
-                        break;
-
-                    case ($diff > 60 && $diff < 3600 ):
-                         $count = floor($diff/60);
-                       if ($count==1) 
-                          {
-                          $suffix = "minute";
-                          }
-                        else
-                        {
-                          $suffix = "minutes";
-                        }
-                          
-                        break;
-
-                case ($diff > 3600 && $diff < 86400 ):
-                         $count = floor($diff/3600);
-                       if ($count==1) 
-                          {
-                          $suffix = "hour";
-                          }
-                        else
-                        {
-                          $suffix = "hours";
-                        }
-                          
-                        break;
-
-              case ($diff > 86400 && $diff <  2629743 ):
-                         $count = floor($diff/86400);
-                       if ($count==1) 
-                          {
-                          $suffix = "day";
-                          }
-                        else
-                        {
-                          $suffix = "days";
-                        }
-                          
-                        break;
-
-                  case ($diff > 2629743 && $diff < 31556926):
-                         $count = floor($diff/2629743);
-                       if ($count==1) 
-                          {
-                          $suffix = "month";
-                          }
-                        else
-                        {
-                          $suffix = "months";
-                        }
-                          
-                        break;
-                        case ($diff > 31556926):
-                         $count = floor($diff/31556926);
-                       if ($count==1) 
-                          {
-                          $suffix = "year";
-                          }
-                        else
-                        {
-                          $suffix = "years";
-                        }
-                          
-                        break;
-                    }
+                   
                        $countstudent = mysql_query("SELECT * FROM student_group WHERE gid ='".$row1['gid']."'"); 
                        $numstudent = mysql_num_rows($countstudent);
                              echo "<tr>
                   <td>#</td>
                   <td>".$row1['gname']."</td>
-                  <td>$count $suffix</td>
+                  <td>$date_posted</td>
                 
                   <td>".$row1['gpassword']."</td>
                   <td>$numstudent</td>

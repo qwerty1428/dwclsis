@@ -8,7 +8,7 @@ $time= time();
 
 if(isset($_POST['create'])){
 
-	$createquiz = mysql_query("INSERT INTO quiz_group(name,gid,qtr,password,posted_by,date_created)VALUES('$qname','$group','$quarter','$pass','".$user_data['user_id']."','$time')");
+	$createquiz = mysql_query("INSERT INTO quiz_group(name,gid,qtr,password,posted_by,date_created)VALUES('$qname','$group','$quarter','$pass','".$user_data['user_id']."',now())");
 	$lastqgid=mysql_insert_id();
 	$_SESSION['qgroup']=$lastqgid;
 	header('location:create_quiz_question.php');

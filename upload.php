@@ -42,7 +42,7 @@ if(isset($_POST['save'])){
 			 }
 
 			 $location = 'uploads/userdata/videos/'.$rand_dir_name.''.$file_name;
-			 	$query = "INSERT INTO videos(file_id,file_name,title,description,date_posted,posted_by,tags,location,type,thumbnail) VALUES ('$file_id','$filename','$title','$description',$time,'".$user_data['user_id']."','$tags','$location','$filetype','$imageFile')";
+			 	$query = "INSERT INTO videos(file_id,file_name,title,description,date_posted,posted_by,tags,location,type,thumbnail) VALUES ('$file_id','$filename','$title','$description',now(),'".$user_data['user_id']."','$tags','$location','$filetype','$imageFile')";
 				
 					move_uploaded_file($file_tmp,'uploads/userdata/videos/'.$rand_dir_name.''.$filename);
 					$result = mysql_query($query);

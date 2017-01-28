@@ -21,6 +21,7 @@ if(empty($_POST)===false){
 				$errors[]='Error!';
 			}else{
 				$_SESSION['user_id'] = $login;
+				$_SESSION['username'] = $username;
 				header("location:index.php");
 				exit();
 			}

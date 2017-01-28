@@ -33,7 +33,10 @@ if($user_data['access']== 1){
 <?php }else{
 
 ?>
+<div class="embed-responsive embed-responsive-16by9">
 <iframe src="games/science_connect.swf" height="600" width="900" style="border:none;"></iframe>
+</div>
+
 <?php
 	}
 }else{

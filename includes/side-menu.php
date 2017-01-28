@@ -1,5 +1,23 @@
 <div class='thumbnail' id='user-menu'>
+
+<?php
+ $profile = mysql_query("SELECT profile_pic FROM users WHERE user_id ='".$user_data['user_id']."' ");
+            while($row=mysql_fetch_assoc($profile)){
+                 $pic = $row['profile_pic'];
+              }
+            if($pic==""){
+?>
+
       <img src='img/prof_pic/def.png' id='prof_pic'>
+<?php
+}else{
+  echo "<center>
+                <img src='$pic' height='150px' widht='150px' class='img' />
+              </center>";
+}
+?>
+
+
       <div class='caption'>
         <h3 class='text-center'><?php echo $user_data['first_name']." ".$user_data['last_name']; ?></h3>
 <?php 
@@ -14,7 +32,7 @@ if($user_data['access']== 1){
  }else{
   echo $menu = "
         <div class='nav nav-pills nav-stacked user-nav' role='group' aria-label='...'>
-      <li role='presentation' class='active'><a href='#' class='btn btn-primary' role='button'>Profile</a> </li>
+    
       
          <li role='presentation' class='active'><a href='group_password.php' rel='facebox' class='btn btn-success'>Enter Password</a></li><br /> 
       ";

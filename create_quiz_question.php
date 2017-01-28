@@ -51,7 +51,7 @@ $selectGroup= mysql_query("SELECT * FROM tbl_group  ");
 
        <?php 
        if(isset($_GET['id'])){
-       $question= mysql_query("SELECT * FROM quiz_questions WHERE id = ".$_GET['id']."");
+       $question= mysql_query("SELECT * FROM questions WHERE id = ".$_GET['id']."");
        while($row=mysql_fetch_assoc($question)){
          
          $quiz_question = $row['question'];
@@ -66,36 +66,21 @@ $selectGroup= mysql_query("SELECT * FROM tbl_group  ");
        </div>
        </div>";
 
-        $quiz_answers = mysql_query("SELECT * FROM answers_questions WHERE question_id = ".$row['id']." ");
+        $quiz_answers = mysql_query("SELECT * FROM answers WHERE question_id = ".$row['id']." ");
         while($row1 = mysql_fetch_assoc($quiz_answers)){
          $answers = $row1['answer'];
          $correct_ans = $row1['correct'];
          if($correct_ans==1){
           $checked='checked';
          }
-        echo "
-
-
-        <div class='form-group'>
-          <div class='col-sm-10'>
-        <strong>Please create the first answer for the question</strong>
-          <br />
-            <input type='text' id='mcanswer1'  name='answer[]' required value='$answers'>&nbsp;
-              <label style='cursor:pointer; color:#06F;'>
-              <input type='radio' name='iscorrect[]'  value='answer1' $checked>Correct Answer?
-            </label>
-       
-        </div>
-    </div>
-   
-    ";
+        
 
        }
 
 
        }
 
-        echo "<input type='text'  name='id'  value='".$_GET['id']."' />";
+        echo "<input type='hidden'  name='id'  value='".$_GET['id']."' />";
     }else{
       echo "<div class='content' id='mc'>
 
@@ -141,12 +126,17 @@ $selectGroup= mysql_query("SELECT * FROM tbl_group  ");
  </div>";
     }
  
-
+if(isset($_GET['qgid'])){
+  $qgid=$_GET['qgid'];
+}else{
+   $qgid='';
+}
        ?>
       
      
     <input type="hidden" value="mc" name="type">
     <input type="submit" class="btn btn-default" value="Add To Quiz">
+    <a href="question_list.php?qgid=<?php echo $qgid;?>"  class="btn btn-primary">View Question List</a>
     </form>
  </div>
 </div>

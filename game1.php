@@ -33,7 +33,9 @@ if($user_data['access']== 1){
 <?php }else{
 
 ?>
-<iframe src="games/the_brain_game.swf" height="600" width="900" style="border:none;"></iframe>
+<div class="embed-responsive embed-responsive-16by9">
+	<iframe class="embed-responsive-item" src="games/the_brain_game.swf" height="600" width="900" style="border:none;"></iframe>
+</div>
 <?php
 	}
 }else{

@@ -18,7 +18,7 @@ if(logged_in()== true){
       </div>
  <table class="table">
      <tr>
-      <th>#</th>
+      
       <th>Title</th>
       <th>Date Posted</th>
       <th>Quarter</th>
@@ -30,12 +30,13 @@ if(logged_in()== true){
             $results = mysql_query("SELECT * FROM tbl_lessons WHERE posted_by = '".$user_data['user_id']."' ");
                  $colnum=mysql_num_rows($results);
                   if($colnum == 0){
-                      echo "<div class='well'>
-                        <h3>No Lesson Posted</h3>
-                      </div>";
+                      echo "<tr>
+                      
+                        <td colspan='4'>No Lesson Posted</td>
+                      </tr>";
                   }else{
                    while($row1 = mysql_fetch_assoc($results)){
-                      $date_posted = $row1['date_posted'];
+                     $date_posted = $row1['date_posted'];
                       $gid = $row1['gid'];
                       $getGroup= mysql_query("SELECT * FROM tbl_group WHERE gid='$gid'  ");
                       if($gid == 0 )
@@ -48,97 +49,13 @@ if(logged_in()== true){
                     }
                       }
                        
-                    
-                    $time=time();
-                    $diff = $time - $date_posted;
-
-                    switch (1) {
-                      case ($diff < 60):
-                         $count = $diff;
-                        if($count==0){
-                           $count = "a moment";
-                         }
-                        elseif ($count==1) 
-                          {
-                          $suffix = "second";
-                          }
-                        else
-                        {
-                          $suffix = "seconds";
-                        }
-                          
-                        break;
-
-                    case ($diff > 60 && $diff < 3600 ):
-                         $count = floor($diff/60);
-                       if ($count==1) 
-                          {
-                          $suffix = "minute";
-                          }
-                        else
-                        {
-                          $suffix = "minutes";
-                        }
-                          
-                        break;
-
-                case ($diff > 3600 && $diff < 86400 ):
-                         $count = floor($diff/3600);
-                       if ($count==1) 
-                          {
-                          $suffix = "hour";
-                          }
-                        else
-                        {
-                          $suffix = "hours";
-                        }
-                          
-                        break;
-
-              case ($diff > 86400 && $diff <  2629743 ):
-                         $count = floor($diff/86400);
-                       if ($count==1) 
-                          {
-                          $suffix = "day";
-                          }
-                        else
-                        {
-                          $suffix = "days";
-                        }
-                          
-                        break;
-
-                  case ($diff > 2629743 && $diff < 31556926):
-                         $count = floor($diff/2629743);
-                       if ($count==1) 
-                          {
-                          $suffix = "month";
-                          }
-                        else
-                        {
-                          $suffix = "months";
-                        }
-                          
-                        break;
-                        case ($diff > 31556926):
-                         $count = floor($diff/31556926);
-                       if ($count==1) 
-                          {
-                          $suffix = "year";
-                          }
-                        else
-                        {
-                          $suffix = "years";
-                        }
-                          
-                        break;
-                    }
+                   
                         
 
                              echo "<tr>
-                  <td>#</td>
+             
                   <td>".$row1['title']."</td>
-                  <td>$count $suffix</td>
+                  <td>$date_posted</td>
                 
                   <td>".$row1['qtr']."</td>
                  

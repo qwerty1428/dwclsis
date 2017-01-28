@@ -33,7 +33,9 @@ if($user_data['access']== 1){
 <?php }else{
 
 ?>
-<iframe src="games/space_gravity_game_2.swf" height="600" width="900" style="border:none;"></iframe>
+<div class="embed-responsive embed-responsive-16by9">
+<iframe src="games/space_gravity_game_2.swf" height="600" width="900" style="border:none;"></iframe></div>
+
 <?php
 	}
 }else{

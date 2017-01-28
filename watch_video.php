@@ -21,7 +21,7 @@ if(logged_in()== true){
             
 
   echo "
-          <div class=''>
+          <div class='embed-responsive embed-responsive-16by9'>
               <video width='900' height='600' controls autoplay>
               <source src='".$row['location']."".$row['file_name']."' type='".$row['type']."'>
               Your browser does not support HTML5 video.

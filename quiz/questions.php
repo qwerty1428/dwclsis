@@ -42,11 +42,12 @@ if(isset($_GET['question'])){
 		exit();
 	}
 	if($arrCount >= $numQuestions){
-		echo 'finished|<p>There are no more questions. Please enter your first and last name and click next</p>
+		echo 'finished|<p>There are no more questions. </p>
 				<form action="userAnswers.php" method="post">
 				<input type="hidden" name="complete" value="true">
-				<input type="text" name="username">
-				<input type="submit" value="Finish">
+				<input type="hidden" name="username" value="'.$_SESSION['username'].'">
+				<input type="hidden" name="quiz_group" value="'.$_SESSION['qgroup'].'">
+				<input type="submit" class="btn btn-default" value="Click here to get score">
 				</form>';
 		exit();
 	}
